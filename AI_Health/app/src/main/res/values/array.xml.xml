@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="health">
+        <item>요가</item>
+        <item>스트레칭</item>
+    </string-array>
+</resources>

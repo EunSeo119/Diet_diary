@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "665075078606",
+    "project_id": "ai-hometraining",
+    "storage_bucket": "ai-hometraining.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665075078606:android:4ec33134b4c421565dc79f",
+        "android_client_info": {
+          "package_name": "org.techtown.ai_health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665075078606-hamhtnk3oi3puoh9s1vmvfe8end76h6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXwaAiunZ-gzU5d5zyp0aHVzmc6CPmQjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665075078606-hamhtnk3oi3puoh9s1vmvfe8end76h6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
