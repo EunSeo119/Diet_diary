@@ -10,12 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,14 +29,26 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class diet extends AppCompatActivity {
 
     public TextView textView;
 
+    private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
+    private DatabaseReference mDatabaseRef; //실시간 데이터베이스
+
+//    private FirebaseDatabase mfirebaseDatabase = FirebaseDatabase.getInstance();
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     DatabaseReference ref;
     private AutoCompleteTextView txtSearch;
     private RecyclerView listData;
+    public String gCalories, gName, gStandard, gType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +56,76 @@ public class diet extends AppCompatActivity {
         setContentView(R.layout.activity_diet);
 
         Button home = (Button) findViewById(R.id.homebutton);
+        Button btn_save = findViewById(R.id.btn_save);
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
+                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
+                Toast.makeText(diet.this, gVar, Toast.LENGTH_SHORT).show();
+
+                databaseReference.child("UserDiet").push().setValue(gVar);
+                mDatabase.child("UserDiet").child("1").child("calories").setValue(gCalories);
+                mDatabase.child("UserDiet").child("1").child("name").setValue(gName);
+                mDatabase.child("UserDiet").child("1").child("standard").setValue(gStandard);
+                mDatabase.child("UserDiet").child("1").child("type").setValue(gType);
+                RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
+
+                LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(diet.this);
+                mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+
+
+
+                /*DatabaseReference hopperRef = mDatabaseRef.child("UserDiet");
+                Map<String, Object> hopperUpdates = new HashMap<>();
+                hopperUpdates.put("nickname", "Amazing Grace");
+
+                hopperRef.updateChildrenAsync(hopperUpdates);*/
+
+               /* public Map<String, Object> toMap() {
+                    HashMap<String, Object> result = new HashMap<>();
+                    result.put("gCalories", gCalories);
+                    result.put("gName", gName);
+                    result.put("gStandard", gStandard);
+                    result.put("gType", gType);
+                    return result;
+                }*/
+
+  //              mDatabaseRef.child("userdd").child(data).setValue(emil),addOnSuccessListener(new On)
+
+              /*  mDatabase.child("UserDiet").child(gName).setValue(gCalories).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(diet.this,"저장 성공", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(diet.this,"저장 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        });*/
+
+
+
+
+
+
+/*
+                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                DietAccess access = new DietAccess();
+                access.setIdToken(firebaseUser.getUid());
+                access.setCalories(gCalories);
+                access.setDname(gName);
+                access.setStandard(gStandard);
+                access.setType(gType);
+
+                //setValue : database에 insert (삽입) 행위
+                mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(access);*/
+            }
+        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +205,17 @@ public class diet extends AppCompatActivity {
                                 ds.child("type").getValue(String.class), ds.child("calories").getValue(String.class)
                         ,ds.child("standard").getValue(String.class));
                       dietInfos.add(dietInfo);
+
+
+                      gCalories=ds.child("calories").getValue(String.class);
+                      gName=ds.child("name").getValue(String.class);
+                      gStandard=ds.child("standard").getValue(String.class);
+                      gType=ds.child("type").getValue(String.class);
+
+ /*                     Toast.makeText(diet.this, gCalories, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(diet.this, ds.child("standard").getValue(String.class), Toast.LENGTH_SHORT).show();*/
+
+
                     }
 
                     CustomAdapter customAdapter = new CustomAdapter(dietInfos);
@@ -217,6 +315,9 @@ public class diet extends AppCompatActivity {
             return localDataSet.size();
         }
     }
+
+
+
 
 
 }

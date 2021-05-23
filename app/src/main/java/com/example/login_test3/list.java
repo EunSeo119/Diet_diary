@@ -24,7 +24,6 @@ public class list extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
 
         ref = FirebaseDatabase.getInstance().getReference("dietdata");
         txtSearch = (AutoCompleteTextView) findViewById(R.id.txtSearch);

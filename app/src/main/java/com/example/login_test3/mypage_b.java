@@ -24,5 +24,15 @@ public class mypage_b extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button home = (Button) findViewById(R.id.homebutton);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

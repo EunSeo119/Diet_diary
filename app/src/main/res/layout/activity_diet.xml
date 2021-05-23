@@ -24,30 +24,36 @@
     </LinearLayout>
 
 
-
     <AutoCompleteTextView
         android:id="@+id/txtSearch"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/white"
-        android:textColor="@color/black"
         android:padding="10dp"
-       ></AutoCompleteTextView>
+        android:textColor="@color/black"></AutoCompleteTextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listData"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="377dp"
+        android:layout_height="328dp"
         android:layout_below="@+id/txtSearch"
+        android:layout_margin="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
-        android:background="@color/design_default_color_primary_dark">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:background="@color/design_default_color_primary_dark"></androidx.recyclerview.widget.RecyclerView>
 
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="저장" />
 
     <LinearLayout
         android:layout_width="match_parent"
