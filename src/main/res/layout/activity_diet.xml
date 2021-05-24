@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".diet">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_weight="5"
+            android:textColor="@color/black"
+            android:textSize="100px" />
+    </LinearLayout>
+
+
+
+    <AutoCompleteTextView
+        android:id="@+id/txtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:padding="10dp"
+       ></AutoCompleteTextView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listData"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_below="@+id/txtSearch"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/design_default_color_primary_dark"></androidx.recyclerview.widget.RecyclerView>
+
+    <ListView
+        android:id="@+id/list1"
+        android:layout_width="wrap_content"
+        android:layout_height="133dp"
+        android:background="@color/purple_200"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="저장" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/homebutton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/home1"
+            android:scaleType="centerCrop"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/calender"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/calender"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/heart"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/heart"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/mypage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/human"
+            app:backgroundTint="#000000"
+            app:iconTint="#000000" />
+    </LinearLayout>
+
+</LinearLayout>
