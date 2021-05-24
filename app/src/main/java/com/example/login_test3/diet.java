@@ -35,6 +35,7 @@ import java.util.Map;
 public class diet extends AppCompatActivity {
 
     public TextView textView;
+    public int time=0;
 
     private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
     private DatabaseReference mDatabaseRef; //실시간 데이터베이스
@@ -63,14 +64,19 @@ public class diet extends AppCompatActivity {
             public void onClick(View view) {
                 //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
                 String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
-                Toast.makeText(diet.this, gVar, Toast.LENGTH_SHORT).show();
+                String result = gVar.substring(0, gVar.length()-10);
+ //               gVar.substring(1, 3);
+                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
 
-                databaseReference.child("UserDiet").push().setValue(gVar);
-                mDatabase.child("UserDiet").child("1").child("calories").setValue(gCalories);
-                mDatabase.child("UserDiet").child("1").child("name").setValue(gName);
-                mDatabase.child("UserDiet").child("1").child("standard").setValue(gStandard);
-                mDatabase.child("UserDiet").child("1").child("type").setValue(gType);
+  //              databaseReference.child("UserDiet").push().setValue(gVar);
+
+                mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
+                mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
+                mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
+                mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);
                 RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
+
+                time+=1;
 
                 LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(diet.this);
                 mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -78,52 +84,7 @@ public class diet extends AppCompatActivity {
 
 
 
-                /*DatabaseReference hopperRef = mDatabaseRef.child("UserDiet");
-                Map<String, Object> hopperUpdates = new HashMap<>();
-                hopperUpdates.put("nickname", "Amazing Grace");
 
-                hopperRef.updateChildrenAsync(hopperUpdates);*/
-
-               /* public Map<String, Object> toMap() {
-                    HashMap<String, Object> result = new HashMap<>();
-                    result.put("gCalories", gCalories);
-                    result.put("gName", gName);
-                    result.put("gStandard", gStandard);
-                    result.put("gType", gType);
-                    return result;
-                }*/
-
-  //              mDatabaseRef.child("userdd").child(data).setValue(emil),addOnSuccessListener(new On)
-
-              /*  mDatabase.child("UserDiet").child(gName).setValue(gCalories).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(diet.this,"저장 성공", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(diet.this,"저장 실패", Toast.LENGTH_SHORT).show();
-                            }
-                        });*/
-
-
-
-
-
-
-/*
-                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
-                DietAccess access = new DietAccess();
-                access.setIdToken(firebaseUser.getUid());
-                access.setCalories(gCalories);
-                access.setDname(gName);
-                access.setStandard(gStandard);
-                access.setType(gType);
-
-                //setValue : database에 insert (삽입) 행위
-                mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(access);*/
             }
         });
 
