@@ -21,8 +21,7 @@ public class upload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference postRef = database.getReference();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         EditText title = (EditText) findViewById(R.id.title);
         EditText content = (EditText) findViewById(R.id.content);
         Button write = (Button) findViewById(R.id.write);
@@ -38,7 +37,7 @@ public class upload extends AppCompatActivity {
                 String stitle = title.getText().toString();
                 String scontent = content.getText().toString();
                 Post post = new Post(stitle, scontent, sdate);
-                postRef.child("Post").push().setValue(post);
+                database.child("Post").push().setValue(post);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }

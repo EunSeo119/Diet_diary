@@ -3,6 +3,7 @@ package org.techtown.ai_health;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         Button heart = (Button) findViewById(R.id.heart);
         Button upload = (Button) findViewById(R.id.upload);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference listRef = database.getReference();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+//        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.si)
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
