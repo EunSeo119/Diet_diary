@@ -35,7 +35,9 @@ import java.util.Map;
 public class diet extends AppCompatActivity {
 
     public TextView textView;
-    public int time=0;
+    public int Btime=0;
+    public int Ltime=0;
+    public int Dtime=0;
     public Button checkD;
 
     private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
@@ -74,6 +76,8 @@ public class diet extends AppCompatActivity {
 
         Button home = (Button) findViewById(R.id.homebutton);
         Button btn_save = findViewById(R.id.btn_save);
+        Button btn_save2 = findViewById(R.id.btn_save2);
+        Button btn_save3 = findViewById(R.id.btn_save3);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,17 +90,83 @@ public class diet extends AppCompatActivity {
 
                 //              databaseReference.child("UserDiet").push().setValue(gVar);
 
-                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("칼로리").setValue(gCalories);
-                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("이름").setValue(gName);
-                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("양").setValue(gStandard);
-                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("종류").setValue(gType);
+                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("칼로리").setValue(gCalories);
+                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("이름").setValue(gName);
+                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("양").setValue(gStandard);
+                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("종류").setValue(gType);
                 /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
                 mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
                 mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
                 mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);*/
                 RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
 
-                time+=1;
+                Btime+=1;
+
+                LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(diet.this);
+                mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+
+
+
+
+            }
+        });
+
+        btn_save2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
+                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
+                String result = gVar.substring(0, gVar.length()-10);
+                //               gVar.substring(1, 3);
+                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
+
+                //              databaseReference.child("UserDiet").push().setValue(gVar);
+
+                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("칼로리").setValue(gCalories);
+                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("이름").setValue(gName);
+                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("양").setValue(gStandard);
+                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("종류").setValue(gType);
+                /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
+                mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
+                mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
+                mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);*/
+                RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
+
+                Ltime+=1;
+
+                LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(diet.this);
+                mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+
+
+
+
+            }
+        });
+
+        btn_save3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
+                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
+                String result = gVar.substring(0, gVar.length()-10);
+                //               gVar.substring(1, 3);
+                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
+
+                //              databaseReference.child("UserDiet").push().setValue(gVar);
+
+                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("칼로리").setValue(gCalories);
+                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("이름").setValue(gName);
+                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("양").setValue(gStandard);
+                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("종류").setValue(gType);
+                /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
+                mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
+                mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
+                mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);*/
+                RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
+
+                Dtime+=1;
 
                 LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(diet.this);
                 mRecyclerView.setLayoutManager(mLinearLayoutManager);

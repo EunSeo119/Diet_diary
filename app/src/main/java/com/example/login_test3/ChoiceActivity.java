@@ -49,6 +49,12 @@ public class ChoiceActivity extends AppCompatActivity {
         TextView breakfast1 = (TextView)findViewById(R.id.breakfast1);
         TextView breakfast2 = (TextView)findViewById(R.id.breakfast2);
         TextView breakfast3 = (TextView)findViewById(R.id.breakfast3);
+        TextView launch1 = (TextView)findViewById(R.id.launch1);
+        TextView launch2 = (TextView)findViewById(R.id.launch2);
+        TextView launch3 = (TextView)findViewById(R.id.launch3);
+        TextView dinner1 = (TextView)findViewById(R.id.dinner1);
+        TextView dinner2 = (TextView)findViewById(R.id.dinner2);
+        TextView dinner3 = (TextView)findViewById(R.id.dinner3);
 
 //        textview.setText("대한민국");
 
@@ -73,9 +79,11 @@ public class ChoiceActivity extends AppCompatActivity {
         String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
         String result = gVar.substring(0, gVar.length()-10);
         final int[] record = {1};
+        final int[] record2 = {1};
+        final int[] record3 = {1};
 
         //파이어베이스에서 데이타를 읽어올 경로
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result);
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("아침");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -93,6 +101,65 @@ public class ChoiceActivity extends AppCompatActivity {
                     else if(record[0] ==3){
                         breakfast3.setText(firemessage);
                         record[0] +=1;
+                    }
+
+                    Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+            }
+        });
+
+
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("점심");
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String firemessage = snapshot.getValue().toString();    //문자열로 받기
+                    sport.add(firemessage);  //리스트에 추가
+                    if(record2[0] ==1){
+                        launch1.setText(firemessage);
+                        record2[0] +=1;
+                    }
+                    else if(record2[0] ==2){
+                        launch2.setText(firemessage);
+                        record2[0] +=1;
+                    }
+                    else if(record2[0] ==3){
+                        launch3.setText(firemessage);
+                        record2[0] +=1;
+                    }
+
+                    Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+            }
+        });
+
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("저녁");
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String firemessage = snapshot.getValue().toString();    //문자열로 받기
+                    sport.add(firemessage);  //리스트에 추가
+                    if(record3[0] ==1){
+                        dinner1.setText(firemessage);
+                        record3[0] +=1;
+                    }
+                    else if(record3[0] ==2){
+                        dinner2.setText(firemessage);
+                        record3[0] +=1;
+                    }
+                    else if(record3[0] ==3){
+                        dinner3.setText(firemessage);
+                        record3[0] +=1;
                     }
 
                     Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();

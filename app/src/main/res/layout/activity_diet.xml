@@ -27,8 +27,9 @@
 
     <Button
         android:id="@+id/checkD"
-        android:layout_width="match_parent"
+        android:layout_width="204dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="기록보기" />
 
 
@@ -55,13 +56,40 @@
         android:background="@color/design_default_color_primary_dark"></androidx.recyclerview.widget.RecyclerView>
 
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="354dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:text="저장" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="아침" />
+
+        <Button
+            android:id="@+id/btn_save2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="점심" />
+
+        <Button
+            android:id="@+id/btn_save3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:text="저녁" />
+
+    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
