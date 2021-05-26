@@ -21,6 +21,8 @@ public class calendar extends AppCompatActivity {
 
         calendarView = findViewById(R.id.calendarView);
 
+
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -34,11 +36,38 @@ public class calendar extends AppCompatActivity {
         });
 
         Button home = (Button) findViewById(R.id.homebutton);
+        Button calendar = (Button) findViewById(R.id.calendar);
+        Button heart = (Button) findViewById(R.id.heart);
+        Button mypage = (Button) findViewById(R.id.mypage);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(intent);
+            }
+        });
+
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), list.class);
+                startActivity(intent);
+            }
+        });
+
+        mypage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), mypage_a.class);
                 startActivity(intent);
             }
         });

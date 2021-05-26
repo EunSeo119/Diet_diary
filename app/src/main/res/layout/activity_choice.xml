@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChoiceActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_weight="5"
+        android:textColor="@color/black"
+        android:textSize="100px"
+        app:layout_constraintBottom_toTopOf="@+id/breakfast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="아침"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/breakfast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="점심"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="저녁"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/breakfast"
+        android:layout_width="323dp"
+        android:layout_height="139dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="323dp"
+        android:layout_height="74dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="323dp"
+        android:layout_height="74dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/homebutton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/home1"
+            android:padding="0sp"
+            android:scaleType="centerCrop"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/calendar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/calender"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/heart"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/heart"
+            app:backgroundTint="#000000" />
+
+        <Button
+            android:id="@+id/mypage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/human"
+            app:backgroundTint="#000000"
+            app:iconTint="#000000" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="77dp"
+        android:layout_height="37dp"
+        android:text="기록"
+        app:layout_constraintBottom_toTopOf="@+id/breakfast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.299"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/breakfast1"
+        android:layout_width="298dp"
+        android:layout_height="31dp"
+        android:text="@+id/breakfast1"
+        app:layout_constraintBottom_toTopOf="@+id/breakfast2"
+        app:layout_constraintEnd_toEndOf="@+id/breakfast"
+        app:layout_constraintStart_toStartOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@+id/breakfast" />
+
+    <TextView
+        android:id="@+id/breakfast2"
+        android:layout_width="290dp"
+        android:layout_height="38dp"
+        android:text="@+id/breakfast2"
+        app:layout_constraintBottom_toTopOf="@+id/breakfast3"
+        app:layout_constraintEnd_toEndOf="@+id/breakfast"
+        app:layout_constraintStart_toStartOf="@+id/breakfast" />
+
+    <TextView
+        android:id="@+id/breakfast3"
+        android:layout_width="287dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="68dp"
+        android:text="@+id/breakfast3"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="@+id/breakfast"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="@+id/breakfast" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

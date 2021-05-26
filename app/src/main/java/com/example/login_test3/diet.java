@@ -36,6 +36,7 @@ public class diet extends AppCompatActivity {
 
     public TextView textView;
     public int time=0;
+    public Button checkD;
 
     private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
     private DatabaseReference mDatabaseRef; //실시간 데이터베이스
@@ -51,10 +52,25 @@ public class diet extends AppCompatActivity {
     private RecyclerView listData;
     public String gCalories, gName, gStandard, gType;
 
+    HashMap result = new HashMap();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        String email = user.getEmail();
+        result.put("email", email);
+
+        //날짜
+        textView = (TextView) findViewById(R.id.textView);
+        Intent intent = getIntent();
+        String date = intent.getExtras().getString("date");
+        textView.setText(date);
+
 
         Button home = (Button) findViewById(R.id.homebutton);
         Button btn_save = findViewById(R.id.btn_save);
@@ -65,15 +81,19 @@ public class diet extends AppCompatActivity {
                 //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
                 String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
                 String result = gVar.substring(0, gVar.length()-10);
- //               gVar.substring(1, 3);
+                //               gVar.substring(1, 3);
                 Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
 
-  //              databaseReference.child("UserDiet").push().setValue(gVar);
+                //              databaseReference.child("UserDiet").push().setValue(gVar);
 
-                mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
+                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("칼로리").setValue(gCalories);
+                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("이름").setValue(gName);
+                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("양").setValue(gStandard);
+                mDatabase.child("UserDiet2").child(date).child(result).child(""+time).child("종류").setValue(gType);
+                /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
                 mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
                 mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
-                mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);
+                mDatabase.child("UserDiet").child(result).child("type"+time).setValue(gType);*/
                 RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listData);
 
                 time+=1;
@@ -96,11 +116,20 @@ public class diet extends AppCompatActivity {
             }
         });
 
-        //날짜
-        textView = (TextView) findViewById(R.id.textView);
-        Intent intent = getIntent();
-        String date = intent.getExtras().getString("date");
-        textView.setText(date);
+        checkD = findViewById(R.id.checkD);
+
+
+        checkD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChoiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
         //
 
         ref = FirebaseDatabase.getInstance().getReference("dietdata");
@@ -133,7 +162,7 @@ public class diet extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String selection = parent.getItemAtPosition(position).toString();
-                          getDiet(selection);
+                            getDiet(selection);
                         }
 
                     });
@@ -164,14 +193,14 @@ public class diet extends AppCompatActivity {
                     {
                         DietInfo dietInfo = new DietInfo(ds.child("name").getValue(String.class),
                                 ds.child("type").getValue(String.class), ds.child("calories").getValue(String.class)
-                        ,ds.child("standard").getValue(String.class));
-                      dietInfos.add(dietInfo);
+                                ,ds.child("standard").getValue(String.class));
+                        dietInfos.add(dietInfo);
 
 
-                      gCalories=ds.child("calories").getValue(String.class);
-                      gName=ds.child("name").getValue(String.class);
-                      gStandard=ds.child("standard").getValue(String.class);
-                      gType=ds.child("type").getValue(String.class);
+                        gCalories=ds.child("calories").getValue(String.class);
+                        gName=ds.child("name").getValue(String.class);
+                        gStandard=ds.child("standard").getValue(String.class);
+                        gType=ds.child("type").getValue(String.class);
 
  /*                     Toast.makeText(diet.this, gCalories, Toast.LENGTH_SHORT).show();
                         Toast.makeText(diet.this, ds.child("standard").getValue(String.class), Toast.LENGTH_SHORT).show();*/
@@ -227,10 +256,10 @@ public class diet extends AppCompatActivity {
         private ArrayList<DietInfo> localDataSet;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-          TextView name;
-          TextView type;
-          TextView calories;
-          TextView standard;
+            TextView name;
+            TextView type;
+            TextView calories;
+            TextView standard;
 
 
             public ViewHolder(View v) {
@@ -262,12 +291,12 @@ public class diet extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
 
-        DietInfo thisdiet = localDataSet.get(position);
+            DietInfo thisdiet = localDataSet.get(position);
 
-        holder.name.setText(thisdiet.getName());
-        holder.type.setText(thisdiet.getType());
-        holder.calories.setText(thisdiet.getCalories());
-        holder.standard.setText(thisdiet.getStandard());
+            holder.name.setText(thisdiet.getName());
+            holder.type.setText(thisdiet.getType());
+            holder.calories.setText(thisdiet.getCalories());
+            holder.standard.setText(thisdiet.getStandard());
         }
 
         // Return the size of your dataset (invoked by the layout manager)
