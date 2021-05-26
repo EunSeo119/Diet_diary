@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_test3">
-        <activity android:name=".ChoiceActivity"></activity>
+        <activity android:name=".MycheckActivity"></activity>
+        <activity android:name=".ChoiceActivity" />
         <activity android:name=".list" />
         <activity android:name=".practice" />
         <activity android:name=".diet" />
@@ -24,9 +25,7 @@
         <activity android:name=".mypage_b" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

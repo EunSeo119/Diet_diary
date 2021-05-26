@@ -1,5 +1,6 @@
 package com.example.login_test3;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class diet extends AppCompatActivity {
     public int Dtime=0;
     public Button checkD;
 
+
     private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
     private DatabaseReference mDatabaseRef; //실시간 데이터베이스
 
@@ -53,6 +55,9 @@ public class diet extends AppCompatActivity {
     private AutoCompleteTextView txtSearch;
     private RecyclerView listData;
     public String gCalories, gName, gStandard, gType;
+    private DatabaseReference mDatabase1= FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference mDatabase2= FirebaseDatabase.getInstance().getReference();
+
 
     HashMap result = new HashMap();
 
@@ -73,6 +78,10 @@ public class diet extends AppCompatActivity {
         String date = intent.getExtras().getString("date");
         textView.setText(date);
 
+        mDatabase  = FirebaseDatabase.getInstance().getReference().child("UserDiet").child(date).child("아침");
+        mDatabase1 = FirebaseDatabase.getInstance().getReference().child("UserDiet").child(date).child("점심");
+        mDatabase2 = FirebaseDatabase.getInstance().getReference().child("UserDiet").child(date).child("저녁");
+
 
         Button home = (Button) findViewById(R.id.homebutton);
         Button btn_save = findViewById(R.id.btn_save);
@@ -83,17 +92,18 @@ public class diet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
-                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
-                String result = gVar.substring(0, gVar.length()-10);
-                //               gVar.substring(1, 3);
-                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
+//                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
+//                String result = gVar.substring(0, gVar.length()-10);
+//                //               gVar.substring(1, 3);
+//                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
 
                 //              databaseReference.child("UserDiet").push().setValue(gVar);
 
-                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("칼로리").setValue(gCalories);
-                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("이름").setValue(gName);
-                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("양").setValue(gStandard);
-                mDatabase.child("UserDiet2").child(date).child(result).child("아침").child(""+Btime).child("종류").setValue(gType);
+
+                mDatabase.child(uid).child(""+Btime).child("calories").setValue(gCalories);
+                mDatabase.child(uid).child(""+Btime).child("name").setValue(gName);
+                mDatabase.child(uid).child(""+Btime).child("standard").setValue(gStandard);
+                mDatabase.child(uid).child(""+Btime).child("type").setValue(gType);
                 /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
                 mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
                 mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
@@ -116,17 +126,17 @@ public class diet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
-                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
-                String result = gVar.substring(0, gVar.length()-10);
+//                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
+//                String result = gVar.substring(0, gVar.length()-10);
                 //               gVar.substring(1, 3);
-                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
 
                 //              databaseReference.child("UserDiet").push().setValue(gVar);
 
-                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("칼로리").setValue(gCalories);
-                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("이름").setValue(gName);
-                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("양").setValue(gStandard);
-                mDatabase.child("UserDiet2").child(date).child(result).child("점심").child(""+Ltime).child("종류").setValue(gType);
+                mDatabase1.child(uid).child(""+Ltime).child("calories").setValue(gCalories);
+                mDatabase1.child(uid).child(""+Ltime).child("name").setValue(gName);
+                mDatabase1.child(uid).child(""+Ltime).child("standard").setValue(gStandard);
+                mDatabase1.child(uid).child(""+Ltime).child("type").setValue(gType);
                 /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
                 mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
                 mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
@@ -156,10 +166,10 @@ public class diet extends AppCompatActivity {
 
                 //              databaseReference.child("UserDiet").push().setValue(gVar);
 
-                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("칼로리").setValue(gCalories);
-                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("이름").setValue(gName);
-                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("양").setValue(gStandard);
-                mDatabase.child("UserDiet2").child(date).child(result).child("저녁").child(""+Dtime).child("종류").setValue(gType);
+                mDatabase2.child(uid).child(""+Dtime).child("calories").setValue(gCalories);
+                mDatabase2.child(uid).child(""+Dtime).child("name").setValue(gName);
+                mDatabase2.child(uid).child(""+Dtime).child("standard").setValue(gStandard);
+                mDatabase2.child(uid).child(""+Dtime).child("type").setValue(gType);
                 /* mDatabase.child("UserDiet").child(result).child("calories"+time).setValue(gCalories);
                 mDatabase.child("UserDiet").child(result).child("name"+time).setValue(gName);
                 mDatabase.child("UserDiet").child(result).child("standard"+time).setValue(gStandard);
@@ -192,8 +202,10 @@ public class diet extends AppCompatActivity {
         checkD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChoiceActivity.class);
+                Intent intent = new Intent(getApplication(), ChoiceActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
+
             }
         });
 
