@@ -32,11 +32,14 @@ public class upload extends AppCompatActivity {
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleDateFormat getDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat getDate = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat getTime = new SimpleDateFormat("hh:mm:ss");
+
                 String sdate = getDate.format(mDate);
+                String stime = getTime.format(mDate);
                 String stitle = title.getText().toString();
                 String scontent = content.getText().toString();
-                Post post = new Post(stitle, scontent, sdate);
+                Post post = new Post(stitle, scontent, sdate, stime);
                 database.child("Post").push().setValue(post);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -48,16 +51,19 @@ public class upload extends AppCompatActivity {
 
 class Post {
 
-    private String title;
-    private String content;
-    private String date;
+    String title;
+    String content;
+    String date;
+    String time;
+    String image;
 
     Post(){}
 
-    Post(String title, String content, String date){
+    Post(String title, String content, String date, String time){
         this.title = title;
         this.content = content;
         this.date = date;
+        this.time = time;
     }
 
     public String getTitle()
@@ -72,16 +78,23 @@ class Post {
     public String getContent(){
         return content;
     }
-    public void SetContent(String type){
-        this.content = type;
+    public void setContent(String content){
+        this.content = content;
     }
 
     public String getDate(){
         return date;
     }
 
-    public void SetDate(String standard){
-        this.date= standard;
+    public void setDate(String date){
+        this.date= date;
+    }
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time){
+        this.time= time;
     }
 
 
