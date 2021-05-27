@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-//ㅠㅠㅠㅠㅠ
+
 public class MainActivity extends AppCompatActivity {
     ListView listview;
     List<Post> post1 = new ArrayList<Post>();
