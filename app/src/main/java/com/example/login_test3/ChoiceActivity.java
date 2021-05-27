@@ -37,13 +37,16 @@ public class ChoiceActivity extends AppCompatActivity {
     private DatabaseReference mDatabase =FirebaseDatabase.getInstance().getReference() ;
     private final ArrayList<String> sport= new ArrayList<>();
 
-    public static Context context_main;
+    public static Context context_main3;
     public String gCal;
     public int save=0;
     public String gCal2;
     public int save2=0;
     public String gCal3;
     public int save3=0;
+
+    public static Context context_gstrCal;
+    public String gstrCal="";
 
 
 
@@ -240,11 +243,12 @@ public class ChoiceActivity extends AppCompatActivity {
                             gaga = Integer.parseInt(result);
 
                             save=save+gaga;
+
+                            Toast.makeText(ChoiceActivity.this,Integer.toString(save), Toast.LENGTH_SHORT).show();
+
                             gaga2=Integer.toString(save);
 
-                            Toast.makeText(ChoiceActivity.this,gaga2, Toast.LENGTH_SHORT).show();
-
-                            //((ChoiceActivity)ChoiceActivity.context_main).gCal=gaga2;
+                            ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
                         }
                     }
                 }
@@ -442,6 +446,6 @@ public class ChoiceActivity extends AppCompatActivity {
            }
         });
 
-
+        context_gstrCal = this;
     }
 }
