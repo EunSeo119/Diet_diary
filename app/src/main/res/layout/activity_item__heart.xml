@@ -27,23 +27,8 @@
         android:id="@+id/detail_heart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="찜" />
+        android:text="찜 삭제" />
 
-
-
-    <Button
-        android:id="@+id/detail_remove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="삭제" />
-
-    <Button
-        android:id="@+id/detail_modify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="수정" />
 
 
 </LinearLayout>

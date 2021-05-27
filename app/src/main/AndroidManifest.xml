@@ -14,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_test3">
-        <activity android:name=".item_detail"></activity>
-        <activity android:name=".MycheckActivity"></activity>
+        <activity android:name=".item__heart"></activity>
+        <activity android:name=".Heart" />
+        <activity android:name=".my_writing" />
+        <activity android:name=".item_detail" />
+        <activity android:name=".MycheckActivity" />
         <activity android:name=".ChoiceActivity" />
         <activity android:name=".list" />
         <activity android:name=".upload" />

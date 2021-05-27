@@ -2,9 +2,7 @@ package com.example.login_test3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,16 +15,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-public class item_detail extends AppCompatActivity {
+public class item__heart extends AppCompatActivity {
 
     DatabaseReference mdatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_detail);
+        setContentView(R.layout.activity_item__heart);
+
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String content = intent.getStringExtra("content");
@@ -49,7 +47,7 @@ public class item_detail extends AppCompatActivity {
         Button detail_modify = findViewById(R.id.detail_modify);
         Button detail_heart = findViewById(R.id.detail_heart);
 
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("UserHeart");
+        mdatabase = FirebaseDatabase.getInstance().getReference().child("UserHeart").child(date+"_"+time+"_"+uid);
 
         Glide.with(this).load(image).into(detail_image);
         detail_title.setText(title);
@@ -58,15 +56,12 @@ public class item_detail extends AppCompatActivity {
         detail_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Post post = new Post(title, content, date, time, image, uid);
-                mdatabase.child(date+"_"+time+"_"+uid).setValue(post);
+                mdatabase.removeValue();
+                Intent intent= new Intent(getApplicationContext(), Heart.class);
+                startActivity(intent);
             }
         });
 
-        if (getuid.equals(uid)){
-            detail_modify.setVisibility(View.VISIBLE);
-            detail_remove.setVisibility(View.VISIBLE);
-        }
 
 
     }

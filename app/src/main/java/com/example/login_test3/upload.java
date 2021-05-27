@@ -154,7 +154,7 @@ public class upload extends AppCompatActivity {
     }
 }
 
-class PostUser {
+class PostUser extends Post {
 
     String title;
     String content;
@@ -275,3 +275,64 @@ class Post {
 
 }
 
+class PostHeart {
+
+    String title;
+    String content;
+    String date;
+    String time;
+    String imageUrl;
+    String uid;
+
+    PostHeart(){}
+
+    PostHeart(String title, String content, String date, String time, String imageUrl, String uid){
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.time = time;
+        this.imageUrl = imageUrl;
+        this.uid = uid;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String name){
+        this.title = name;
+    }
+
+    public String getContent(){
+        return content;
+    }
+    public void setContent(String content){
+        this.content = content;
+    }
+
+    public String getDate(){
+        return date;
+    }
+
+    public void setDate(String date){
+        this.date= date;
+    }
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time){
+        this.time= time;
+    }
+
+    public String getImageUrl(){
+        return imageUrl;
+    }
+    public void SetImageUrl(String standard){
+        this.imageUrl= standard;
+    }
+    public String getuid() {return uid;}
+    public void Setuid(String uid){this.uid=uid;}
+
+}

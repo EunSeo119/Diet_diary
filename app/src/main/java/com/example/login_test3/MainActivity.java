@@ -35,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
         Button calendar = (Button) findViewById(R.id.calendar);
         Button heart = (Button) findViewById(R.id.heart);
         Button upload = (Button) findViewById(R.id.upload);
+        Button mypage = (Button) findViewById(R.id.mypage);
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         listview = (ListView) findViewById(R.id.listview1);
         Myadapter adapter = new Myadapter(this, R.layout.item_coustom);
         listview.setAdapter(adapter);
+
+        Writingadapter adpater = new Writingadapter(this, R.layout.item_coustom);
+
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("title", adapter.getItem(i).title);
                 intent.putExtra("content", adapter.getItem(i).content);
                 intent.putExtra("imageUrl", adapter.getItem(i).imageUrl);
+                intent.putExtra("time", adapter.getItem(i).time);
+                intent.putExtra("date", adapter.getItem(i).date);
                 intent.putExtra("uid", adapter.getItem(i).uid);
-
 
                 startActivity(intent);
             }
@@ -104,8 +109,15 @@ public class MainActivity extends AppCompatActivity {
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), MycheckActivity.class);
+               Intent intent = new Intent(getApplicationContext(), Heart.class);
                startActivity(intent);
+            }
+        });
+        mypage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), mypage_a.class);
+                startActivity(intent);
             }
         });
     }
