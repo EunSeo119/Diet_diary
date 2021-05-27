@@ -74,8 +74,8 @@ public class upload extends AppCompatActivity {
                 Post post = new Post(stitle, scontent, sdate, stime, sImageUrl, sUid);
                 PostUser postuser = new PostUser(stitle, scontent, sdate, stime, sImageUrl);
 
-                database.child("Post").push().setValue(post);
-                database.child("PostUser").child(uid).push().setValue(postuser);
+                database.child("Post/"+uid+sdate+"_"+stime).setValue(post);
+                database.child("PostUser").child(uid+"/"+sdate+"_"+stime).setValue(postuser);
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
