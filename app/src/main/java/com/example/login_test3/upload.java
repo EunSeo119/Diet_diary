@@ -36,6 +36,7 @@ public class upload extends AppCompatActivity {
     private Uri filePath;
     public String downloadUrl;
     private ImageView preview;
+    String filename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class upload extends AppCompatActivity {
         Button write = (Button) findViewById(R.id.write);
         Button camera = (Button) findViewById(R.id.camera);
         preview = (ImageView) findViewById(R.id.iv_preview);
-
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
 
@@ -58,6 +58,7 @@ public class upload extends AppCompatActivity {
                 uploadFile();
                 SimpleDateFormat getDate = new SimpleDateFormat("yyyy-MM-dd");
                 SimpleDateFormat getTime = new SimpleDateFormat("hh:mm:ss");
+                downloadUrl = "https://firebasestorage.googleapis.com/v0/b/ai-hometraining.appspot.com/o/images%2F" + filename +"?alt=media";
 
                 String sdate = getDate.format(mDate);
                 String stime = getTime.format(mDate);
@@ -108,10 +109,9 @@ public class upload extends AppCompatActivity {
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMhh_mmss");
             Date now = new Date();
-            String filename = formatter.format(now) + ".png";
+            filename = formatter.format(now) + ".png";
 
             StorageReference storageRef = storage.getReferenceFromUrl("gs://ai-hometraining.appspot.com").child("images/" + filename);
-            downloadUrl="gs://ai-hometraining.appspot.com/images/"+filename;
 
             storageRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

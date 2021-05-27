@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), item_detail.class);
                 intent.putExtra("title", adapter.getItem(i).title);
                 intent.putExtra("content", adapter.getItem(i).content);
+                intent.putExtra("imageUrl", adapter.getItem(i).imageUrl);
                 startActivity(intent);
             }
         });
