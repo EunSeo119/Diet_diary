@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -41,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         Myadapter adapter = new Myadapter(this, R.layout.item_coustom);
         listview.setAdapter(adapter);
 
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), item_detail.class);
+                intent.putExtra("title", adapter.getItem(i).title);
+                intent.putExtra("content", adapter.getItem(i).content);
+                startActivity(intent);
+            }
+        });
 
         database.child("Post").addChildEventListener(new ChildEventListener() {
             @Override
@@ -48,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 Post post = snapshot.getValue(Post.class);
                 adapter.insert(post, 0);
                 listview.smoothScrollToPosition(adapter.getCount());
-
             }
 
             @Override

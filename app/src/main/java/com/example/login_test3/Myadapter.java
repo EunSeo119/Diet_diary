@@ -58,6 +58,7 @@ public class Myadapter extends ArrayAdapter<Post> {
         private TextView mTitle;
         private TextView mDate;
         private TextView mTime;
+        }
 
     }
-}
+
