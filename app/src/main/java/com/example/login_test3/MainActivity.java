@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// 너무너무 새벽은 힘들당 목아파
 public class MainActivity extends AppCompatActivity {
     ListView listview;
     List<Post> post1 = new ArrayList<Post>();
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
         Button calendar = (Button) findViewById(R.id.calendar);
         Button heart = (Button) findViewById(R.id.heart);
         Button upload = (Button) findViewById(R.id.upload);
