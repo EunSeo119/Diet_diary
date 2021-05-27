@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MycheckActivity.class);
-                startActivity(intent);
+               Intent intent = new Intent(getApplicationContext(), MycheckActivity.class);
+               startActivity(intent);
             }
         });
     }
