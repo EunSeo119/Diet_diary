@@ -48,8 +48,6 @@ public class Myadapter extends ArrayAdapter<Post> {
         viewHolder.mDate.setText(post.date);
         viewHolder.mTime.setText(post.time);
 
-
-
         return view;
     }
 

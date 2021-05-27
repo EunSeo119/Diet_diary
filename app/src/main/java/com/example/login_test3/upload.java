@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +45,9 @@ public class upload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         EditText title = (EditText) findViewById(R.id.title);
         EditText content = (EditText) findViewById(R.id.content);
@@ -65,8 +70,13 @@ public class upload extends AppCompatActivity {
                 String stitle = title.getText().toString();
                 String scontent = content.getText().toString();
                 String sImageUrl = downloadUrl;
-                Post post = new Post(stitle, scontent, sdate, stime, sImageUrl);
+                String sUid = uid;
+                Post post = new Post(stitle, scontent, sdate, stime, sImageUrl, sUid);
+                PostUser postuser = new PostUser(stitle, scontent, sdate, stime, sImageUrl);
+
                 database.child("Post").push().setValue(post);
+                database.child("PostUser").child(uid).push().setValue(postuser);
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -144,7 +154,7 @@ public class upload extends AppCompatActivity {
     }
 }
 
-class Post {
+class PostUser {
 
     String title;
     String content;
@@ -152,9 +162,10 @@ class Post {
     String time;
     String imageUrl;
 
-    Post(){}
 
-    Post(String title, String content, String date, String time, String imageUrl){
+    PostUser(){}
+
+    PostUser(String title, String content, String date, String time, String imageUrl){
         this.title = title;
         this.content = content;
         this.date = date;
@@ -201,3 +212,66 @@ class Post {
     }
 
 }
+
+class Post {
+
+    String title;
+    String content;
+    String date;
+    String time;
+    String imageUrl;
+    String uid;
+
+    Post(){}
+
+    Post(String title, String content, String date, String time, String imageUrl, String uid){
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.time = time;
+        this.imageUrl = imageUrl;
+        this.uid = uid;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String name){
+        this.title = name;
+    }
+
+    public String getContent(){
+        return content;
+    }
+    public void setContent(String content){
+        this.content = content;
+    }
+
+    public String getDate(){
+        return date;
+    }
+
+    public void setDate(String date){
+        this.date= date;
+    }
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time){
+        this.time= time;
+    }
+
+    public String getImageUrl(){
+        return imageUrl;
+    }
+    public void SetImageUrl(String standard){
+        this.imageUrl= standard;
+    }
+    public String getuid() {return uid;}
+    public void Setuid(String uid){this.uid=uid;}
+
+}
+

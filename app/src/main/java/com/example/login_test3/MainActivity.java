@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("title", adapter.getItem(i).title);
                 intent.putExtra("content", adapter.getItem(i).content);
                 intent.putExtra("imageUrl", adapter.getItem(i).imageUrl);
+                intent.putExtra("uid", adapter.getItem(i).uid);
+
+
                 startActivity(intent);
             }
         });
