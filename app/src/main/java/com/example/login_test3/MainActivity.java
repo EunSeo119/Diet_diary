@@ -1,6 +1,7 @@
 package com.example.login_test3;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -50,9 +51,22 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("content", adapter.getItem(i).content);
                 intent.putExtra("imageUrl", adapter.getItem(i).imageUrl);
                 intent.putExtra("uid", adapter.getItem(i).uid);
+                intent.putExtra("time", adapter.getItem(i).time);
+                intent.putExtra("date", adapter.getItem(i).date);
 
 
                 startActivity(intent);
+            }
+        });
+        database.keepSynced(true);
+        database.child("Post").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
