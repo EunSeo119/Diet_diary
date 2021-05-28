@@ -238,17 +238,17 @@ public class ChoiceActivity extends AppCompatActivity {
 
                             }
 
-                            result = c.substring(0,c.length()-1);
-
-                            gaga = Integer.parseInt(result);
-
-                            save=save+gaga;
-
-                            Toast.makeText(ChoiceActivity.this,Integer.toString(save), Toast.LENGTH_SHORT).show();
-
-                            gaga2=Integer.toString(save);
-
-                            ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
+//                            result = c.substring(0, c.length()-1);
+//
+//                            gaga = Integer.parseInt(result);
+//
+//                            save=save+gaga;
+//
+//                            Toast.makeText(ChoiceActivity.this,Integer.toString(save), Toast.LENGTH_SHORT).show();
+//
+//                            gaga2=Integer.toString(save);
+//
+//                            ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
                         }
                     }
                 }

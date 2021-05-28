@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class Writingadapter extends ArrayAdapter<PostUser> {
     public Writingadapter(Context context, int resource){
         super(context, resource);
@@ -35,11 +37,15 @@ public class Writingadapter extends ArrayAdapter<PostUser> {
         TextView title = (TextView) view.findViewById(R.id.tv_title);
         TextView date = (TextView) view.findViewById(R.id.tv_date);
         TextView time = (TextView) view.findViewById(R.id.tv_time);
+        ImageView image = (ImageView) view.findViewById(R.id.iv_image);
 
         PostUser postuser = getItem(position);
         viewHolder.mTitle.setText(postuser.title);
         viewHolder.mDate.setText(postuser.date);
         viewHolder.mTime.setText(postuser.time);
+        Glide.with(getContext()).load(postuser.imageUrl).into(image);
+
+
 
         return view;
     }

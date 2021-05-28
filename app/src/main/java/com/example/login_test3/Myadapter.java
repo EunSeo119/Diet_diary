@@ -2,6 +2,7 @@ package com.example.login_test3;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +45,16 @@ public class Myadapter extends ArrayAdapter<Post> {
         TextView title = (TextView) view.findViewById(R.id.tv_title);
         TextView date = (TextView) view.findViewById(R.id.tv_date);
         TextView time = (TextView) view.findViewById(R.id.tv_time);
+        ImageView image = (ImageView) view.findViewById(R.id.iv_image);
 
         Post post = getItem(position);
         viewHolder.mTitle.setText(post.title);
         viewHolder.mDate.setText(post.date);
         viewHolder.mTime.setText(post.time);
+
+
+        Glide.with(getContext()).load(post.imageUrl).into(image);
+
 
         return view;
     }
