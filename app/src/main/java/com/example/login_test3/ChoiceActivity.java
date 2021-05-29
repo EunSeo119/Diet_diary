@@ -3,7 +3,6 @@ package com.example.login_test3;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,11 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -47,6 +41,8 @@ public class ChoiceActivity extends AppCompatActivity {
 
     public static Context context_gstrCal;
     public String gstrCal="";
+    public String gstrCal2="";
+    public String gstrCal3="";
 
 
 
@@ -87,111 +83,7 @@ public class ChoiceActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-
-       /* TextView email_info;
-​
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // 로그인한 유저의 정보 가져오기
-        String uid = user != null ? user.getUid() : null; // 로그인한 유저의 고유 uid 가져오기
-​
-        mFirebaseAuth = FirebaseAuth.getInstance(); // 유저 계정 정보 가져오기
-        mDatabase = FirebaseDatabase.getInstance().getReference(); // 파이어베이스 realtime database 에서 정보 가져오기
-        DatabaseReference email = mDatabase.child("UserDiet").child("2021");    // 이메일*/
-
-//        String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
-//        String result = gVar.substring(0, gVar.length()-10);
-//        final int[] record = {1};
-//        final int[] record2 = {1};
-//        final int[] record3 = {1};
-
-        //파이어베이스에서 데이타를 읽어올 경로
-//        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("아침");
-//        mDatabaseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    String firemessage = snapshot.getValue().toString();    //문자열로 받기
-//                    sport.add(firemessage);  //리스트에 추가
-//                    if(record[0] ==1){
-//                        breakfast1.setText(firemessage);
-//                        record[0] +=1;
-//                    }
-//                    else if(record[0] ==2){
-//                        breakfast2.setText(firemessage);
-//                        record[0] +=1;
-//                    }
-//                    else if(record[0] ==3){
-//                        breakfast3.setText(firemessage);
-//                        record[0] +=1;
-//                    }
-//
-//                    Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//            }
-//        });
-//
-//
-//        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("점심");
-//        mDatabaseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    String firemessage = snapshot.getValue().toString();    //문자열로 받기
-//                    sport.add(firemessage);  //리스트에 추가
-//                    if(record2[0] ==1){
-//                        launch1.setText(firemessage);
-//                        record2[0] +=1;
-//                    }
-//                    else if(record2[0] ==2){
-//                        launch2.setText(firemessage);
-//                        record2[0] +=1;
-//                    }
-//                    else if(record2[0] ==3){
-//                        launch3.setText(firemessage);
-//                        record2[0] +=1;
-//                    }
-//
-//                    Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//            }
-//        });
-//
-//        mDatabaseRef= FirebaseDatabase.getInstance().getReference("UserDiet2").child("2021").child("5").child("26").child(result).child("저녁");
-//        mDatabaseRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    String firemessage = snapshot.getValue().toString();    //문자열로 받기
-//                    sport.add(firemessage);  //리스트에 추가
-//                    if(record3[0] ==1){
-//                        dinner1.setText(firemessage);
-//                        record3[0] +=1;
-//                    }
-//                    else if(record3[0] ==2){
-//                        dinner2.setText(firemessage);
-//                        record3[0] +=1;
-//                    }
-//                    else if(record3[0] ==3){
-//                        dinner3.setText(firemessage);
-//                        record3[0] +=1;
-//                    }
-//
-//                    Toast.makeText(ChoiceActivity.this,firemessage, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//            }
-//        });
-        Button button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.mycal);
 
         Intent intent = getIntent();
         String date = intent.getExtras().getString("date");
@@ -206,9 +98,9 @@ public class ChoiceActivity extends AppCompatActivity {
 
         mDatabase.addValueEventListener(new ValueEventListener() {
 
-            int gaga;
-            String gaga2;
-            String result;
+            int gaga=0;
+            String gaga2="";
+            String result="";
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -238,17 +130,17 @@ public class ChoiceActivity extends AppCompatActivity {
 
                             }
 
-//                            result = c.substring(0, c.length()-1);
-//
-//                            gaga = Integer.parseInt(result);
-//
-//                            save=save+gaga;
-//
-//                            Toast.makeText(ChoiceActivity.this,Integer.toString(save), Toast.LENGTH_SHORT).show();
-//
-//                            gaga2=Integer.toString(save);
-//
-//                            ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
+                            result = c.substring(0, c.length()-1);
+
+                            gaga = Integer.parseInt(result);
+
+                            save=save+gaga;
+
+                            Toast.makeText(ChoiceActivity.this,Integer.toString(save), Toast.LENGTH_SHORT).show();
+
+                            gaga2=Integer.toString(save);
+
+                            ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
                         }
                     }
                 }
@@ -262,7 +154,10 @@ public class ChoiceActivity extends AppCompatActivity {
         });
 
         mDatabase1.addValueEventListener(new ValueEventListener() {
-            int strCal2;
+
+            int gaga=0;
+            String gaga2="";
+            String result="";
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -286,6 +181,18 @@ public class ChoiceActivity extends AppCompatActivity {
                             lunch3.setText(n + "/" + c + "/" + t + "/" + s);
                         }
 
+                        result = c.substring(0, c.length()-1);
+
+                        gaga = Integer.parseInt(result);
+
+                        save2=save2+gaga;
+
+                        Toast.makeText(ChoiceActivity.this,Integer.toString(save2), Toast.LENGTH_SHORT).show();
+
+                        gaga2=Integer.toString(save2);
+
+                        ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal2 = gaga2;
+
 
                     }
                 }
@@ -298,7 +205,10 @@ public class ChoiceActivity extends AppCompatActivity {
         });
 
         mDatabase2.addValueEventListener(new ValueEventListener() {
-            int strCal3;
+
+            int gaga;
+            String gaga2;
+            String result;
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -323,6 +233,19 @@ public class ChoiceActivity extends AppCompatActivity {
                             dinner3.setText(n + "/" + c + "/" + t + "/" + s);
                         }
 
+                        result = c.substring(0, c.length()-1);
+
+                        gaga = Integer.parseInt(result);
+
+                        save3=save3+gaga;
+
+                        Toast.makeText(ChoiceActivity.this,Integer.toString(save3), Toast.LENGTH_SHORT).show();
+
+                        gaga2=Integer.toString(save3);
+
+                        ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal3 = gaga2;
+
+
 
                     }
                 }
@@ -339,109 +262,8 @@ public class ChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                mDatabase.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                        if(dataSnapshot.exists())
-//                        {
-//                            for (DataSnapshot ds : dataSnapshot.getChildren())
-//                            {
-//                                for(int i =0;i<3;i++) {
-//
-//                                    String n = ds.child(""+i).child("name").getValue(String.class);
-//                                    String c = ds.child(""+i).child("calories").getValue(String.class);
-//                                    String t = ds.child(""+i).child("type").getValue(String.class);
-//                                    String s = ds.child(""+i).child("standard").getValue(String.class);
-//
-//                             //   breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
-//
-//                                    if(i== 0)
-//                                    { breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
-//                                    }
-//                                    else if (i ==1 )
-//                                    {
-//                                        breakfast2.setText(n + "/" + c + "/" + t + "/" + s);
-//                                    }
-//                                    else if(i == 2)
-//                                    {
-//                                        breakfast3.setText(n + "/" + c + "/" + t + "/" + s);
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        // Getting Post failed, log a message
-//                    }
-//                });
-//
-//                mDatabase1.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                            for(int i =0;i<3;i++) {
-//
-//                                String n = ds.child(""+i).child("name").getValue(String.class);
-//                                String c = ds.child(""+i).child("calories").getValue(String.class);
-//                                String t = ds.child(""+i).child("type").getValue(String.class);
-//                                String s = ds.child(""+i).child("standard").getValue(String.class);
-//                     //       lunch1.setText(n + "/" + c + "/" + t + "/" + s);
-//                                if(i== 0)
-//                                { lunch1.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                                else if (i ==1 )
-//                                {
-//                                    lunch2.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                                else if(i == 2)
-//                                {
-//                                    lunch3.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        // Getting Post failed, log a message
-//                    }
-//                });
-//
-//                mDatabase2.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//
-//                            for(int i =0;i<3;i++) {
-//                                String n = ds.child(""+i).child("name").getValue(String.class);
-//                                String c = ds.child(""+i).child("calories").getValue(String.class);
-//                                String t = ds.child(""+i).child("type").getValue(String.class);
-//                                String s = ds.child(""+i).child("standard").getValue(String.class);
-//                           // dinner1.setText(n + "/" + c + "/" + t + "/" + s);
-//
-//                                if(i== 0)
-//                                { dinner1.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                                else if (i ==1 )
-//                                {
-//                                    dinner2.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                                else if(i == 2)
-//                                {
-//                                    dinner3.setText(n + "/" + c + "/" + t + "/" + s);
-//                                }
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        // Getting Post failed, log a message
-//                    }
-//                });
+                Intent intent = new Intent(getApplicationContext(), MycheckActivity.class);
+                startActivity(intent);
 
            }
         });

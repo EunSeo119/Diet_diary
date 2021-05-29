@@ -158,13 +158,7 @@ public class diet extends AppCompatActivity {
         btn_save3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기\
-                String gVar = ((LoginActivity)LoginActivity.context_main).gVar;
-                String result = gVar.substring(0, gVar.length()-10);
-                //               gVar.substring(1, 3);
-                Toast.makeText(diet.this, result, Toast.LENGTH_SHORT).show();
-
-                //              databaseReference.child("UserDiet").push().setValue(gVar);
+                //현재 접속한 회원 정보 불러오기기기기긱ㄱㄱ기
 
                 mDatabase2.child(uid).child(""+Dtime).child("calories").setValue(gCalories);
                 mDatabase2.child(uid).child(""+Dtime).child("name").setValue(gName);
