@@ -35,9 +35,9 @@ public class item__heart extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String getuid = user.getUid();
 
-
-        Log.v("test", "uid" +uid);
         Log.v("test", "getuid" +getuid);
+        Log.v("test", "uid" +uid);
+
 
         TextView detail_title = findViewById(R.id.detail_title);
         TextView detail_content = findViewById(R.id.detail_content);
@@ -46,7 +46,7 @@ public class item__heart extends AppCompatActivity {
         Button detail_modify = findViewById(R.id.detail_modify);
         Button detail_heart = findViewById(R.id.detail_heart);
 
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("UserHeart").child(date+"_"+time+"_"+uid);
+        mdatabase = FirebaseDatabase.getInstance().getReference().child("UserHeart").child(getuid).child(date+"_"+time+"_"+getuid);
 
         Glide.with(this).load(image).into(detail_image);
         detail_title.setText(title);
