@@ -65,7 +65,7 @@ public class item_detail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Post post = new Post(title, content, date, time, image, uid);
-                mdatabase.child(date+"_"+time+"_"+uid).setValue(post);
+                mdatabase.child(getuid).child(date+"_"+time+"_"+getuid).setValue(post);
             }
         });
 

@@ -36,9 +36,8 @@ public class item__heart extends AppCompatActivity {
         String getuid = user.getUid();
 
 
-        Log.v("test", "getuid" +getuid);
         Log.v("test", "uid" +uid);
-
+        Log.v("test", "getuid" +getuid);
 
         TextView detail_title = findViewById(R.id.detail_title);
         TextView detail_content = findViewById(R.id.detail_content);

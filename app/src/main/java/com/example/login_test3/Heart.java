@@ -32,9 +32,7 @@ public class Heart extends AppCompatActivity {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-
+        String suid = user.getUid();
 
         Myadapter adapter = new Myadapter(this, R.layout.item_coustom);
         listview.setAdapter(adapter);
@@ -58,7 +56,7 @@ public class Heart extends AppCompatActivity {
         });
 
 
-        database.child("UserHeart").addChildEventListener(new ChildEventListener() {
+        database.child("UserHeart").child(suid).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Post postheart = snapshot.getValue(Post.class);
