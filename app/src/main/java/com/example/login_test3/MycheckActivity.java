@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class MycheckActivity extends AppCompatActivity {
     public String glCal;
     public String gdCal;
     public int total;
+    public int cResult;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -49,12 +51,28 @@ public class MycheckActivity extends AppCompatActivity {
 
                 Toast.makeText(MycheckActivity.this,TEXT, Toast.LENGTH_SHORT).show();
 
-                if((total - Integer.parseInt(TEXT))>0)
-                    result.setText("초과");
-                else if((total - Integer.parseInt(TEXT))==0)
-                    result.setText("적정");
-                else if((total - Integer.parseInt(TEXT))<0)
-                    result.setText("미만");
+                cResult=total - Integer.parseInt(TEXT);
+
+                if(cResult>0)
+                {
+
+
+                    //result.setTextColor(Color.parseColor("colorPrimary"));
+                    result.setText(cResult+" 초과");
+                }
+
+                else if(cResult==0)
+                {
+                    //result.setTextColor(Color.parseColor("colorPrimaryDark"));
+                    result.setText(cResult+" 적정");
+                }
+
+                else if(cResult<0)
+                {
+                    //result.setTextColor(Color.parseColor("colorPrimaryDark"));
+                    result.setText(cResult+" 미만");
+                }
+
 
             }
         });
