@@ -65,6 +65,7 @@ public class upload extends AppCompatActivity {
         preview = (ImageView) findViewById(R.id.iv_preview);
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
+
         mDatabase = FirebaseDatabase.getInstance().getReference().child("eunsseo").child("UserAccount").child(uid);
 
         mDatabase.addValueEventListener(new ValueEventListener() {
