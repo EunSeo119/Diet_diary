@@ -122,7 +122,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/calender"
+            android:background="@drawable/calender1"
             android:translationX="20dp"
             app:backgroundTint="#000000" />
 
@@ -131,7 +131,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/heart"
+            android:background="@drawable/heart1"
             android:translationX="20dp"
             app:backgroundTint="#000000" />
 
@@ -140,7 +140,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/human"
+            android:background="@drawable/human1"
             android:translationX="20dp"
             app:backgroundTint="#000000"
             app:iconTint="#000000" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FnA extends AppCompatActivity {
@@ -29,7 +30,15 @@ public class FnA extends AppCompatActivity {
         fna3 = (TextView) findViewById(R.id.fna3);
         fna4 = (TextView) findViewById(R.id.fna4);
         fna5 = (TextView) findViewById(R.id.fna5);
+        Button mypagebut = (Button) findViewById(R.id.mypagebut);
 
+        mypagebut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mypage_a.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
