@@ -57,19 +57,19 @@ public class MycheckActivity extends AppCompatActivity {
                 {
 
 
-                    //result.setTextColor(Color.parseColor("colorPrimary"));
+                    result.setTextColor(Color.parseColor("#FF7043"));
                     result.setText(cResult+" 초과");
                 }
 
                 else if(cResult==0)
                 {
-                    //result.setTextColor(Color.parseColor("colorPrimaryDark"));
+                    result.setTextColor(Color.parseColor("#D4B888"));
                     result.setText(cResult+" 적정");
                 }
 
                 else if(cResult<0)
                 {
-                    //result.setTextColor(Color.parseColor("colorPrimaryDark"));
+                    result.setTextColor(Color.parseColor("#FF018786"));
                     result.setText(cResult+" 미만");
                 }
 
