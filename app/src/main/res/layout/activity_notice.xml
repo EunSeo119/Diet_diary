@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#59646E">
+        android:background="#CA984E">
         <TextView
             android:text="공지사항"
             android:layout_margin="25dp"

@@ -16,7 +16,7 @@
             android:alpha="0.87"
             android:textColor="#fff"
             android:gravity="center"
-            android:background="#3F8AC5"
+            android:background="#CA984E"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>
@@ -50,11 +50,12 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#DCA656">
         <Button
             android:text="확인"
             android:textSize="20dp"
-            android:textColor="#3F8AC5"
+            android:textColor="@color/white"
             android:layout_margin="15dp"
 
             android:gravity="center"
