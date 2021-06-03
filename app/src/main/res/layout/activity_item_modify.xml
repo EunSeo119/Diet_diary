@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:orientation="vertical"
-    android:background ="@color/white"
+    android:background="#F1D29D"
     tools:context=".item_modify">
 
     <EditText
@@ -15,7 +15,8 @@
         android:layout_height="80dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="제목을 입력하세요" />
+        android:hint="제목을 입력하세요"
+        android:background="@drawable/edge"/>
 
     <EditText
         android:id="@+id/modify_content"
@@ -24,7 +25,8 @@
         android:layout_weight="9"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="내용을 입력하세요" />
+        android:hint="내용을 입력하세요"
+        android:background="@drawable/edge"/>
 
     <ImageView
         android:id="@+id/modify_image"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MycheckActivity">
+    tools:context=".MycheckActivity"
+    android:background="#F1D29D">
 
     <LinearLayout
         android:id="@+id/linearLayout"
