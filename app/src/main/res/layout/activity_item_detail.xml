@@ -7,43 +7,82 @@
     android:orientation="vertical"
     tools:context=".item_detail">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/detail_heart"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/empty_heart"
+            />
+
+        <Button
+            android:id="@+id/detail_heart_delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fill_heart"
+            android:backgroundTint="@color/black"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/detail_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/btn_empty"
+            android:text="삭제"
+
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/detail_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/btn_empty"
+            android:text="수정"
+
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/detail_title"
+        android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20px"
         android:text="title" />
     <TextView
         android:id="@+id/detail_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="20px"
         android:text="content" />
 
     <ImageView
         android:id="@+id/detail_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_gravity="center"
         />
-    <Button
-        android:id="@+id/detail_heart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="찜" />
 
 
-
-    <Button
-        android:id="@+id/detail_remove"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="삭제" />
-
-    <Button
-        android:id="@+id/detail_modify"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="수정" />
 
 
 </LinearLayout>

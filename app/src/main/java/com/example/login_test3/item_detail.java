@@ -54,6 +54,8 @@ public class item_detail extends AppCompatActivity {
         Button detail_remove = findViewById(R.id.detail_remove);
         Button detail_modify = findViewById(R.id.detail_modify);
         Button detail_heart = findViewById(R.id.detail_heart);
+        Button detail_heart_delete = findViewById(R.id.detail_heart_delete);
+
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("UserHeart");
 
@@ -66,8 +68,22 @@ public class item_detail extends AppCompatActivity {
             public void onClick(View v) {
                 Post post = new Post(title, content, date, time, image, uid);
                 mdatabase.child(getuid).child(date+"_"+time+"_"+getuid).setValue(post);
+                detail_heart.setVisibility(View.GONE);
+                detail_heart_delete.setVisibility(View.VISIBLE);
             }
         });
+
+        DatabaseReference mdatabase_del = FirebaseDatabase.getInstance().getReference().child("UserHeart").child(getuid).child(date+"_"+time+"_"+getuid);
+
+        detail_heart_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mdatabase.removeValue();
+                detail_heart_delete.setVisibility(View.GONE);
+                detail_heart.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         if (getuid.equals(uid)){
             detail_modify.setVisibility(View.VISIBLE);
