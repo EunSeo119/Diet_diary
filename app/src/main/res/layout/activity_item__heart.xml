@@ -5,23 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".item_detail">
+    tools:context=".item_detail"
+    android:background="#F1D29D">
 
     <TextView
         android:id="@+id/detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="title" />
+        android:text="title"
+        android:background="@drawable/edge"/>
     <TextView
         android:id="@+id/detail_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="content" />
+        android:text="content"
+        android:background="@drawable/edge"/>
 
     <ImageView
         android:id="@+id/detail_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:background="@drawable/edge"
         />
     <Button
         android:id="@+id/detail_heart"

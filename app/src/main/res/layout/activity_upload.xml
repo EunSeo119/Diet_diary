@@ -6,7 +6,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:padding="20dp"
 android:orientation="vertical"
-android:background ="@color/white"
+    android:background="#F1D29D"
 tools:context=".upload">
 
     <EditText
@@ -15,7 +15,8 @@ tools:context=".upload">
         android:layout_height="80dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="제목을 입력하세요" />
+        android:hint="제목을 입력하세요"
+        android:background="@drawable/edge"/>
 
     <EditText
         android:id="@+id/content"
@@ -24,6 +25,7 @@ tools:context=".upload">
         android:layout_weight="9"
         android:ems="10"
         android:hint="내용을 입력하세요"
+        android:background="@drawable/edge"
         android:inputType="textMultiLine"
         android:lines="8"
         android:scrollHorizontally="true"/>
