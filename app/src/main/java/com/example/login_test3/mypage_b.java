@@ -85,6 +85,7 @@ public class mypage_b extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void signOut() {

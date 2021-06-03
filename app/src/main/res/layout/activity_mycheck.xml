@@ -13,47 +13,18 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-
         tools:layout_editor_absoluteX="0dp">
 
         <Button
-            android:id="@+id/homebutton"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/home1"
-            android:padding="0sp"
-            android:scaleType="centerCrop"
-            android:translationX="20dp"
-            app:backgroundTint="#000000" />
+            android:id="@+id/returnback"
+            android:layout_width="103dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="20dp"
+            android:text="확인 완료"
+            android:gravity="center"
+            android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/calendar"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/calender1"
-            android:translationX="20dp"
-            app:backgroundTint="#000000" />
-
-        <Button
-            android:id="@+id/heart"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/heart1"
-            android:translationX="20dp"
-            app:backgroundTint="#000000" />
-
-        <Button
-            android:id="@+id/mypage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/human1"
-            android:translationX="20dp"
-            app:backgroundTint="#000000"
-            app:iconTint="#000000" />
     </LinearLayout>
 
     <TextView

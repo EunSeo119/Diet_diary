@@ -87,6 +87,15 @@ public class diet extends AppCompatActivity {
         Button btn_save = findViewById(R.id.btn_save);
         Button btn_save2 = findViewById(R.id.btn_save2);
         Button btn_save3 = findViewById(R.id.btn_save3);
+        Button returnback = (Button) findViewById(R.id.returnback);
+
+        returnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(intent);
+            }
+        });
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override

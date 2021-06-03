@@ -33,6 +33,7 @@ public class MycheckActivity extends AppCompatActivity {
 
         TextView Text1 = (TextView) findViewById(R.id.goal);
 
+
         gbCal=((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal;
         bCal.setText(gbCal);
         glCal=((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal2;
@@ -74,6 +75,16 @@ public class MycheckActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        Button returnback = (Button) findViewById(R.id.returnback);
+
+        returnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(intent);
             }
         });
 
