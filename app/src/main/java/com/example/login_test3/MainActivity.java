@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("uid", adapter.getItem(i).uid);
                 intent.putExtra("time", adapter.getItem(i).time);
                 intent.putExtra("date", adapter.getItem(i).date);
+                intent.putExtra("name", adapter.getItem(i).name);
 
                 startActivity(intent);
             }

@@ -7,7 +7,21 @@
     android:orientation="vertical"
     tools:context=".item_detail"
     android:background="#F1D29D">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/black"
+            android:id="@+id/email" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/black"
+            android:id="@+id/date" />
+    </LinearLayout>
     <TextView
         android:id="@+id/detail_title"
         android:layout_width="match_parent"

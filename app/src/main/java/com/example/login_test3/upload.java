@@ -19,10 +19,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Context;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -39,7 +43,10 @@ public class upload extends AppCompatActivity {
     public String downloadUrl;
     private ImageView preview;
     String filename;
+    public static Context context_main;
+    public String name;
 
+    private DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +54,8 @@ public class upload extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
+
+
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         EditText title = (EditText) findViewById(R.id.title);
@@ -56,6 +65,21 @@ public class upload extends AppCompatActivity {
         preview = (ImageView) findViewById(R.id.iv_preview);
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("eunsseo").child("UserAccount").child(uid);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String n = snapshot.child("name").getValue(String.class);
+                Toast.makeText(upload.this,name, Toast.LENGTH_SHORT).show();
+                name = n;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        }) ;
 
 
 
@@ -67,13 +91,17 @@ public class upload extends AppCompatActivity {
                 SimpleDateFormat getTime = new SimpleDateFormat("hh:mm:ss");
                 downloadUrl = "https://firebasestorage.googleapis.com/v0/b/ai-hometraining.appspot.com/o/images%2F" + filename +"?alt=media";
 
+
                 String sdate = getDate.format(mDate);
                 String stime = getTime.format(mDate);
                 String stitle = title.getText().toString();
                 String scontent = content.getText().toString();
                 String sImageUrl = downloadUrl;
                 String sUid = uid;
-                Post post = new Post(stitle, scontent, sdate, stime, sImageUrl, sUid);
+                String snickname = name;
+                Toast.makeText(upload.this,name+"이 들어왔습니다.", Toast.LENGTH_SHORT).show();
+
+                Post post = new Post(stitle, scontent, sdate, stime, sImageUrl,snickname, sUid);
                 PostUser postuser = new PostUser(stitle, scontent, sdate, stime, sImageUrl);
 
                 database.child("Post/"+uid+sdate+"_"+stime).setValue(post);
@@ -223,16 +251,19 @@ class Post {
     String time;
     String imageUrl;
     String uid;
+    String name;
 
     Post(){}
 
-    Post(String title, String content, String date, String time, String imageUrl, String uid){
+    Post(String title, String content, String date, String time, String imageUrl, String name, String uid){
         this.title = title;
         this.content = content;
         this.date = date;
         this.time = time;
         this.imageUrl = imageUrl;
+        this.name = name;
         this.uid = uid;
+
     }
 
     public String getTitle()
@@ -264,6 +295,13 @@ class Post {
 
     public void setTime(String time){
         this.time= time;
+    }
+
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 
     public String getImageUrl(){

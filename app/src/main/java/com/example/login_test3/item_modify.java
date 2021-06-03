@@ -30,6 +30,7 @@ public class item_modify extends AppCompatActivity {
         String image = intent.getStringExtra("imageUrl");
         String time = intent.getStringExtra("time");
         String date = intent.getStringExtra("date");
+        String nikname = intent.getStringExtra("name");
 
         EditText modify_title = findViewById(R.id.modify_title);
         EditText modify_content = findViewById(R.id.modify_content);
@@ -57,7 +58,7 @@ public class item_modify extends AppCompatActivity {
                 String scontent = modify_content.getText().toString();
                 String sImageUrl = image;
 
-                Post post = new Post(stitle, scontent, date, time, sImageUrl, uid);
+                Post post = new Post(stitle, scontent, date, time, sImageUrl,nikname, uid);
                 PostUser postuser = new PostUser(stitle, scontent, date, time, sImageUrl);
 
                 mDatabase.getReference().child("Post/"+uid+date+"_"+time).setValue(post);
