@@ -100,7 +100,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
@@ -147,12 +147,19 @@
 
     <Button
         android:id="@+id/mycal"
-        android:layout_width="118dp"
-        android:layout_height="39dp"
-        android:text="나의칼로리"
+        android:layout_width="143dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_round"
+        android:drawablePadding="10dp"
+        android:padding="0dp"
+        android:text="오늘의\n칼로리분석"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/breakfast"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -240,5 +247,44 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/textView14" />
+
+    <Button
+        android:id="@+id/bLoad"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:text="식단올리기"
+        android:translationX="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/breakfast"
+        app:layout_constraintEnd_toEndOf="@+id/breakfast2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/breakfast"
+        app:layout_constraintTop_toTopOf="@+id/breakfast"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/lLoad"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:text="식단올리기"
+        android:translationX="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="@+id/launch2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/dLoad"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
+        android:text="식단올리기"
+        android:translationX="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintHorizontal_bias="0.924"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

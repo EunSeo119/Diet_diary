@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,12 +34,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class upload extends AppCompatActivity {
+public class upload2 extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Uri filePath;
     public String downloadUrl;
     private ImageView preview;
     String filename;
+
+    public String s1;
+    public String s2;
+    public String s3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +62,30 @@ public class upload extends AppCompatActivity {
         long now = System.currentTimeMillis();
         Date mDate = new Date(now);
 
+        if(((ChoiceActivity)ChoiceActivity.context_main4).checkload=="1")
+        {
+            s1=((ChoiceActivity)ChoiceActivity.context_main4).mDiet1;
+            s2=((ChoiceActivity)ChoiceActivity.context_main4).mDiet2;
+            s3=((ChoiceActivity)ChoiceActivity.context_main4).mDiet3;
+        }
+        else if(((ChoiceActivity)ChoiceActivity.context_main4).checkload=="2")
+        {
+            s1=((ChoiceActivity)ChoiceActivity.context_main4).mDiet4;
+            s2=((ChoiceActivity)ChoiceActivity.context_main4).mDiet5;
+            s3=((ChoiceActivity)ChoiceActivity.context_main4).mDiet6;
+        }
+        else if(((ChoiceActivity)ChoiceActivity.context_main4).checkload=="3")
+        {
+            s1=((ChoiceActivity)ChoiceActivity.context_main4).mDiet7;
+            s2=((ChoiceActivity)ChoiceActivity.context_main4).mDiet8;
+            s3=((ChoiceActivity)ChoiceActivity.context_main4).mDiet9;
+        }
 
+
+
+
+
+        content.setText(Html.fromHtml(s1 + "<br />" + s2+ "<br />" + s3));
 
         write.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +184,7 @@ public class upload extends AppCompatActivity {
     }
 }
 
-class PostUser extends Post {
+class PostUser2 extends Post2 {
 
     String title;
     String content;
@@ -165,9 +193,9 @@ class PostUser extends Post {
     String imageUrl;
 
 
-    PostUser(){}
+    PostUser2(){}
 
-    PostUser(String title, String content, String date, String time, String imageUrl){
+    PostUser2(String title, String content, String date, String time, String imageUrl){
         this.title = title;
         this.content = content;
         this.date = date;
@@ -215,7 +243,7 @@ class PostUser extends Post {
 
 }
 
-class Post {
+class Post2 {
 
     String title;
     String content;
@@ -224,9 +252,9 @@ class Post {
     String imageUrl;
     String uid;
 
-    Post(){}
+    Post2(){}
 
-    Post(String title, String content, String date, String time, String imageUrl, String uid){
+    Post2(String title, String content, String date, String time, String imageUrl, String uid){
         this.title = title;
         this.content = content;
         this.date = date;
@@ -277,7 +305,7 @@ class Post {
 
 }
 
-class PostHeart {
+class PostHeart2 {
 
     String title;
     String content;
@@ -286,9 +314,9 @@ class PostHeart {
     String imageUrl;
     String uid;
 
-    PostHeart(){}
+    PostHeart2(){}
 
-    PostHeart(String title, String content, String date, String time, String imageUrl, String uid){
+    PostHeart2(String title, String content, String date, String time, String imageUrl, String uid){
         this.title = title;
         this.content = content;
         this.date = date;
