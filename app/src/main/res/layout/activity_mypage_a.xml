@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="#F1D29D"
      >
 
     <ImageView
@@ -49,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="질의응답"
+        android:text="FnA"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_gravity="center"

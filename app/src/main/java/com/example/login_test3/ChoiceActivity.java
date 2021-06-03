@@ -44,9 +44,26 @@ public class ChoiceActivity extends AppCompatActivity {
     public String gstrCal2="";
     public String gstrCal3="";
 
+    public static Context context_main4;
+    public String mDiet1;
+    public String mDiet2;
+    public String mDiet3;
+    public String mDiet4;
+    public String mDiet5;
+    public String mDiet6;
+    public String mDiet7;
+    public String mDiet8;
+    public String mDiet9;
+    public String checkload;
+
+    public String cheackk;
+
 
 
     public Button button;
+    public Button bLoad;
+    public Button lLoad;
+    public Button dLoad;
     public int cnt = 0;
 
     private DatabaseReference mDatabase1= FirebaseDatabase.getInstance().getReference();
@@ -84,6 +101,9 @@ public class ChoiceActivity extends AppCompatActivity {
         String uid = user.getUid();
 
         Button button = (Button) findViewById(R.id.mycal);
+        Button bLoad = (Button) findViewById(R.id.bLoad);
+        Button lLoad = (Button) findViewById(R.id.lLoad);
+        Button dLoad = (Button) findViewById(R.id.dLoad);
 
         Intent intent = getIntent();
         String date = intent.getExtras().getString("date");
@@ -118,16 +138,23 @@ public class ChoiceActivity extends AppCompatActivity {
                             //   breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
 
                             if(i== 0)
-                            { breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
+                            {
+                                breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
+                                cheackk=n + "/" + c + "/" + t + "/" + s;
+                                Toast.makeText(ChoiceActivity.this,cheackk, Toast.LENGTH_SHORT).show();
+                                ((ChoiceActivity)ChoiceActivity.context_main4).mDiet1 = cheackk;
                             }
                             else if (i ==1 )
                             {
                                 breakfast2.setText(n + "/" + c + "/" + t + "/" + s);
+                                cheackk=n + "/" + c + "/" + t + "/" + s;
+                                ((ChoiceActivity)ChoiceActivity.context_main4).mDiet2 = cheackk;
                             }
                             else if(i == 2)
                             {
                                 breakfast3.setText(n + "/" + c + "/" + t + "/" + s);
-
+                                cheackk=n + "/" + c + "/" + t + "/" + s;
+                                ((ChoiceActivity)ChoiceActivity.context_main4).mDiet3 = cheackk;
                             }
 
                             result = c.substring(0, c.length()-1);
@@ -170,15 +197,22 @@ public class ChoiceActivity extends AppCompatActivity {
                         String s = ds.child(""+i).child("standard").getValue(String.class);
                         //       lunch1.setText(n + "/" + c + "/" + t + "/" + s);
                         if(i== 0)
-                        { lunch1.setText(n + "/" + c + "/" + t + "/" + s);
+                        {
+                            lunch1.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet4 = cheackk;
                         }
                         else if (i ==1 )
                         {
                             lunch2.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet5 = cheackk;
                         }
                         else if(i == 2)
                         {
                             lunch3.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet6 = cheackk;
                         }
 
                         result = c.substring(0, c.length()-1);
@@ -222,15 +256,22 @@ public class ChoiceActivity extends AppCompatActivity {
                         // dinner1.setText(n + "/" + c + "/" + t + "/" + s);
 
                         if(i== 0)
-                        { dinner1.setText(n + "/" + c + "/" + t + "/" + s);
+                        {
+                            dinner1.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet7 = cheackk;
                         }
                         else if (i ==1 )
                         {
                             dinner2.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet8 = cheackk;
                         }
                         else if(i == 2)
                         {
                             dinner3.setText(n + "/" + c + "/" + t + "/" + s);
+                            cheackk=n + "/" + c + "/" + t + "/" + s;
+                            ((ChoiceActivity)ChoiceActivity.context_main4).mDiet9 = cheackk;
                         }
 
                         result = c.substring(0, c.length()-1);
@@ -268,6 +309,40 @@ public class ChoiceActivity extends AppCompatActivity {
            }
         });
 
+        bLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((ChoiceActivity)ChoiceActivity.context_main4).checkload = "1";
+                Intent intent = new Intent(getApplicationContext(), upload2.class);
+                startActivity(intent);
+
+            }
+        });
+
+        lLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((ChoiceActivity)ChoiceActivity.context_main4).checkload = "2";
+                Intent intent = new Intent(getApplicationContext(), upload2.class);
+                startActivity(intent);
+
+            }
+        });
+
+        dLoad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((ChoiceActivity)ChoiceActivity.context_main4).checkload = "3";
+                Intent intent = new Intent(getApplicationContext(), upload2.class);
+                startActivity(intent);
+
+            }
+        });
+
         context_gstrCal = this;
+        context_main4=this;
     }
 }

@@ -10,14 +10,18 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Diet_diary"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Login_test3">
-        <activity android:name=".item_modify"/>
+        android:theme="@style/Theme.Diet_diary">
+        <activity android:name=".upload2"></activity>
+        <activity android:name=".Popup"></activity>
+        <activity android:name=".FnA"></activity>
+        <activity android:name=".Notice" />
+        <activity android:name=".item_modify" />
         <activity android:name=".item_detail" />
         <activity android:name=".MycheckActivity" />
-        <activity android:name=".item__heart"></activity>
+        <activity android:name=".item__heart" />
         <activity android:name=".Heart" />
         <activity android:name=".my_writing" />
         <activity android:name=".ChoiceActivity" />

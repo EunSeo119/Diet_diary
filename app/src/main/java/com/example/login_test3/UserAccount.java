@@ -40,7 +40,7 @@ public class UserAccount
         return name;
     }
 
-    public void setName(String id) {
+    public void setName(String name) {
         this.name = name;
     }
 }
