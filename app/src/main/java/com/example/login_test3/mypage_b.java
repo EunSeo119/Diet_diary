@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class mypage_b extends AppCompatActivity {
 
 
@@ -37,6 +39,7 @@ public class mypage_b extends AppCompatActivity {
         Button logout = (Button) findViewById(R.id.join_button);
         TextView notice = (TextView) findViewById(R.id.textView3);
         TextView fna = (TextView) findViewById(R.id.textview2);
+        Button calender = (Button) findViewById(R.id.calender) ;
         email = (TextView) findViewById(R.id.membername);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("eunsseo").child("UserAccount").child(uid);
 
@@ -58,7 +61,14 @@ public class mypage_b extends AppCompatActivity {
 //        email = (TextView) findViewById(R.id.membername);
 //        email.setText(realName);
 
+        calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(intent);
 
+            }
+        });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
