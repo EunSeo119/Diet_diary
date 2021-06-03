@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +20,7 @@ public class mypage_a extends AppCompatActivity {
 
         Button home = (Button) findViewById(R.id.homebutton);
         Button login = (Button) findViewById(R.id.join_button);
+        TextView notice = (TextView) findViewById(R.id.textView3);
 
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -27,6 +29,14 @@ public class mypage_a extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), mypage_b.class);
             startActivity(intent);
         }
+
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Notice.class);
+                startActivity(intent);
+            }
+        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

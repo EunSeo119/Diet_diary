@@ -25,6 +25,7 @@ public class mypage_b extends AppCompatActivity {
 
         TextView writing = (TextView) findViewById(R.id.textview1);
         Button logout = (Button) findViewById(R.id.join_button);
+        TextView notice = (TextView) findViewById(R.id.textView3);
 
         email = (TextView) findViewById(R.id.membername);
         email.setText(TextUtils.isEmpty(user.getEmail())? "No email": user.getEmail());
@@ -53,6 +54,14 @@ public class mypage_b extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), my_writing.class);
+                startActivity(intent);
+            }
+        });
+
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Notice.class);
                 startActivity(intent);
             }
         });
