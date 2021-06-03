@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class Popup extends AppCompatActivity {
     TextView txtText;
+    TextView namText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,26 +19,25 @@ public class Popup extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
+        namText = (TextView)findViewById(R.id.namText);
         txtText = (TextView)findViewById(R.id.txtText);
 
-        //데이터 가져오기
+
         Intent intent = getIntent();
         String data = intent.getStringExtra("data");
+        String que = intent.getStringExtra("name");
         txtText.setText(data);
+        namText.setText(que);
+
     }
 
-    //확인 버튼 클릭
     public void mOnClose(View v){
-        //데이터 전달하기
 
-
-        //액티비티(팝업) 닫기
         finish();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
         if(event.getAction()== MotionEvent.ACTION_OUTSIDE){
             return false;
         }
@@ -46,7 +46,6 @@ public class Popup extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //안드로이드 백버튼 막기
         return;
     }
 }

@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_test3">
-        <activity android:name=".Popup"></activity>
+        <activity android:name=".FnA"></activity>
+        <activity android:name=".Popup" />
         <activity android:name=".Notice" />
         <activity android:name=".item_modify" />
         <activity android:name=".item_detail" />
