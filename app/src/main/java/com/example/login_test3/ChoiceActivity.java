@@ -124,16 +124,12 @@ public class ChoiceActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.exists())
-                {
-                    for (DataSnapshot ds : dataSnapshot.getChildren())
-                    {
                         for(int i =0;i<3;i++) {
 
-                            String n = ds.child(""+i).child("name").getValue(String.class);
-                            String c = ds.child(""+i).child("calories").getValue(String.class);
-                            String t = ds.child(""+i).child("type").getValue(String.class);
-                            String s = ds.child(""+i).child("standard").getValue(String.class);
+                            String n = dataSnapshot.child(uid).child(""+i).child("name").getValue(String.class);
+                            String c =  dataSnapshot.child(uid).child(""+i).child("calories").getValue(String.class);
+                            String t =  dataSnapshot.child(uid).child(""+i).child("type").getValue(String.class);
+                            String s =  dataSnapshot.child(uid).child(""+i).child("standard").getValue(String.class);
 
                             //   breakfast1.setText(n + "/" + c + "/" + t + "/" + s);
 
@@ -168,8 +164,7 @@ public class ChoiceActivity extends AppCompatActivity {
                             gaga2=Integer.toString(save);
 
                             ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal = gaga2;
-                        }
-                    }
+
                 }
             }
 
@@ -188,13 +183,13 @@ public class ChoiceActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
                     for(int i =0;i<3;i++) {
 
-                        String n = ds.child(""+i).child("name").getValue(String.class);
-                        String c = ds.child(""+i).child("calories").getValue(String.class);
-                        String t = ds.child(""+i).child("type").getValue(String.class);
-                        String s = ds.child(""+i).child("standard").getValue(String.class);
+                        String n =  dataSnapshot.child(uid).child(""+i).child("name").getValue(String.class);
+                        String c =  dataSnapshot.child(uid).child(""+i).child("calories").getValue(String.class);
+                        String t =  dataSnapshot.child(uid).child(""+i).child("type").getValue(String.class);
+                        String s =  dataSnapshot.child(uid).child(""+i).child("standard").getValue(String.class);
                         //       lunch1.setText(n + "/" + c + "/" + t + "/" + s);
                         if(i== 0)
                         {
@@ -228,7 +223,7 @@ public class ChoiceActivity extends AppCompatActivity {
                         ((ChoiceActivity)ChoiceActivity.context_gstrCal).gstrCal2 = gaga2;
 
 
-                    }
+
                 }
             }
 
@@ -246,13 +241,12 @@ public class ChoiceActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     for(int i =0;i<3;i++) {
-                        String n = ds.child(""+i).child("name").getValue(String.class);
-                        String c = ds.child(""+i).child("calories").getValue(String.class);
-                        String t = ds.child(""+i).child("type").getValue(String.class);
-                        String s = ds.child(""+i).child("standard").getValue(String.class);
+                        String n =  dataSnapshot.child(uid).child(""+i).child("name").getValue(String.class);
+                        String c =  dataSnapshot.child(uid).child(""+i).child("calories").getValue(String.class);
+                        String t =  dataSnapshot.child(uid).child(""+i).child("type").getValue(String.class);
+                        String s =  dataSnapshot.child(uid).child(""+i).child("standard").getValue(String.class);
                         // dinner1.setText(n + "/" + c + "/" + t + "/" + s);
 
                         if(i== 0)
@@ -288,7 +282,7 @@ public class ChoiceActivity extends AppCompatActivity {
 
 
 
-                    }
+
                 }
             }
 
