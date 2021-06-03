@@ -18,10 +18,9 @@
             android:orientation="vertical" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -32,9 +31,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/btn_empty"
-                    android:text="삭제"
 
-                    android:textColor="@color/black"
+                    android:text="삭제"
                     android:visibility="gone" />
 
                 <Button
@@ -44,11 +42,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/btn_empty"
+
                     android:text="수정"
-
-                    android:textColor="@color/black"
                     android:visibility="gone" />
-
 
                 <Button
                     android:id="@+id/detail_heart"
@@ -56,8 +52,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/empty_heart" />
-
+                    android:background="@drawable/empty_heart"
+                    android:textColor="@color/black" />
                 <Button
                     android:id="@+id/detail_heart_delete"
                     android:layout_width="50dp"
@@ -65,11 +61,27 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/fill_heart"
-                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:visibility="gone" />
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <TextView
@@ -77,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20px"
+
                 android:background="@drawable/edge"
                 android:text="title"
                 android:textSize="20dp" />
@@ -86,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20px"
+
                 android:background="@drawable/edge"
                 android:text="content"
                 android:textSize="15dp" />

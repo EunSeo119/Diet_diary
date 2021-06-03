@@ -39,7 +39,7 @@ public class item_detail extends AppCompatActivity {
         String uid = intent.getStringExtra("uid");
         String time = intent.getStringExtra("time");
         String date = intent.getStringExtra("date");
-
+        String nikname = intent.getStringExtra("name");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String getuid = user.getUid();
 
@@ -50,6 +50,8 @@ public class item_detail extends AppCompatActivity {
 
         TextView detail_title = findViewById(R.id.detail_title);
         TextView detail_content = findViewById(R.id.detail_content);
+        TextView detail_email= findViewById(R.id.email);
+        TextView detail_date= findViewById(R.id.date);
         ImageView detail_image = findViewById(R.id.detail_image);
         Button detail_remove = findViewById(R.id.detail_remove);
         Button detail_modify = findViewById(R.id.detail_modify);
@@ -62,11 +64,13 @@ public class item_detail extends AppCompatActivity {
         Glide.with(this).load(image).into(detail_image);
         detail_title.setText(title);
         detail_content.setText(content);
+        detail_date.setText(date);
+        detail_email.setText(nikname);
 
         detail_heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Post post = new Post(title, content, date, time, image, uid);
+                Post post = new Post(title, content, date, time, image, nikname, uid);
                 mdatabase.child(getuid).child(date+"_"+time+"_"+getuid).setValue(post);
                 detail_heart.setVisibility(View.GONE);
                 detail_heart_delete.setVisibility(View.VISIBLE);
@@ -111,6 +115,7 @@ public class item_detail extends AppCompatActivity {
                     intent.putExtra("imageUrl", image);
                     intent.putExtra("time", time);
                     intent.putExtra("date", date);
+                    intent.putExtra("name", nikname);
                     startActivity(intent);
                 }
             });
