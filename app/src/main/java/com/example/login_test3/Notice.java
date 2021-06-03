@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Notice extends AppCompatActivity {
@@ -26,8 +27,15 @@ public class Notice extends AppCompatActivity {
         note1 = (TextView) findViewById(R.id.note1);
         note2 = (TextView) findViewById(R.id.note2);
         note3 = (TextView) findViewById(R.id.note3);
+        Button mypagebut = (Button) findViewById(R.id.mypagebut);
 
-
+        mypagebut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), mypage_a.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void mOnPopupClick1(View v){

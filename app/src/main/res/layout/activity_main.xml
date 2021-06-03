@@ -35,7 +35,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/home1"
+            android:background="@drawable/home2"
             android:padding="0sp"
             android:scaleType="centerCrop"
             app:backgroundTint="#000000" />
@@ -45,7 +45,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/calender"
+            android:background="@drawable/calender1"
             app:backgroundTint="#000000" />
 
         <Button
@@ -53,7 +53,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/heart"
+            android:background="@drawable/heart1"
             app:backgroundTint="#000000" />
 
         <Button
@@ -61,7 +61,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="10dp"
-            android:background="@drawable/human"
+            android:background="@drawable/human1"
             app:backgroundTint="#000000"
             app:iconTint="#000000" />
     </LinearLayout>

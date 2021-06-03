@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,5 +86,33 @@ public class Heart extends AppCompatActivity {
             }
         });
 
+        Button home = (Button) findViewById(R.id.homebutton);
+        Button calendar = (Button) findViewById(R.id.calendar);
+        Button heart = (Button) findViewById(R.id.heart);
+        Button mypage = (Button) findViewById(R.id.mypage);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), calendar.class);
+                startActivity(intent);
+            }
+        });
+
+        mypage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), mypage_a.class);
+                startActivity(intent);
+            }
+        });
     }
 }

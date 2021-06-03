@@ -41,16 +41,6 @@ public class mypage_b extends AppCompatActivity {
             }
         });
 
-        Button home = (Button) findViewById(R.id.homebutton);
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
         fna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +64,27 @@ public class mypage_b extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button home = (Button) findViewById(R.id.homebutton);
+        Button calendar = (Button) findViewById(R.id.calendar);
+        Button heart = (Button) findViewById(R.id.heart);
+        Button mypage = (Button) findViewById(R.id.mypage);
+
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Heart.class);
+                startActivity(intent);
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void signOut() {

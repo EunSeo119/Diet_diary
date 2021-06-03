@@ -18,7 +18,6 @@ public class mypage_a extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage_a);
 
-        Button home = (Button) findViewById(R.id.homebutton);
         Button login = (Button) findViewById(R.id.join_button);
         TextView notice = (TextView) findViewById(R.id.textView3);
         TextView fna = (TextView) findViewById(R.id.textview2);
@@ -43,14 +42,6 @@ public class mypage_a extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Notice.class);
-                startActivity(intent);
-            }
-        });
-
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
