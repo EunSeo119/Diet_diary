@@ -71,7 +71,7 @@ public class upload extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String n = snapshot.child("name").getValue(String.class);
-                Toast.makeText(upload.this,name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(upload.this,name, Toast.LENGTH_SHORT).show();
                 name = n;
             }
 
