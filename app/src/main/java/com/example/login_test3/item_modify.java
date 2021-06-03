@@ -60,9 +60,19 @@ public class item_modify extends AppCompatActivity {
                 Post post = new Post(stitle, scontent, date, time, sImageUrl, uid);
                 PostUser postuser = new PostUser(stitle, scontent, date, time, sImageUrl);
 
-                mDatabase.getReference().child("Post/"+uid+date+"_"+time).setValue(post);
+                mDatabase.getReference().child("Post/"+date+"_"+time+"_"+uid).setValue(post);
                 mDatabase.getReference().child("PostUser").child(uid+"/"+date+"_"+time).setValue(postuser);
-                finish();
+//                Intent intent= new Intent(getApplicationContext(), item_detail.class);
+//                intent.putExtra("title", title);
+//                intent.putExtra("content", content);
+//                intent.putExtra("imageUrl", image);
+//                intent.putExtra("time", time);
+//                intent.putExtra("date", date);
+//                intent.putExtra("uid", uid);
+//                intent.putExtra("time", time);
+//                intent.putExtra("date", date);
+//
+//                startActivity(intent);
             }
         });
 

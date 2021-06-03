@@ -94,9 +94,11 @@ public class item_detail extends AppCompatActivity {
             detail_remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mDatabase.getReference().child("Post/"+uid+date+"_"+time).removeValue();
+                    mDatabase.getReference().child("Post/"+date+"_"+time+"_"+uid).removeValue();
                     mDatabase.getReference().child("PostUser").child(uid+"/"+date+"_"+time).removeValue();
-                    finish();
+                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+
                 }
             });
             detail_modify.setOnClickListener(new View.OnClickListener() {
